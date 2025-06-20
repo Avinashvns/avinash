@@ -1,5 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { useMemo } from "react";
+import { getDesignTokens } from "@/mui/theme";
+import ColorModeContext from "@/mui/ColorModeContext";
+import { ThemeProvider } from "@emotion/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,11 +21,29 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const [mode, setMode]=useState("light");
+
+  const colorMode = useMemo(
+    ()=> ({
+      toggleColorMode: ()=>{
+        setMode((prev) => (prev === "light" ? "dark" : "light" ));
+      }
+    }), []
+  );
+
+  const theme = useMemo(()=> createTheme(getDesignTokens(mode)),[mode]);
+
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-      </body>
-    </html>
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <html lang="en">
+          <body>
+            <Navbar />
+            <main>{children}</main>
+          </body>
+        </html>
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }
