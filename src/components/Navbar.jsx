@@ -19,33 +19,41 @@ export default function Navbar() {
           Avinash Singh Portfolio
         </Typography>
         <nav>
-          <Link href="/" style={{ marginRight: 16, color: "inherit", textDecoration: "none" }}>
-            Home
+          <Link href="/" passHref>
+            <Typography variant="button" sx={{ color: "inherit", mx: 2 }}>
+              Home
+            </Typography>
           </Link>
-          <Link href="/about" style={{ marginRight: 16, color: "inherit", textDecoration: "none" }}>
-            About
+          <Link href="/about" passHref>
+            <Typography variant="button" sx={{ color: "inherit", mx: 2 }}>
+              About
+            </Typography>
           </Link>
-          <Link href="/projects" style={{ marginRight: 16, color: "inherit", textDecoration: "none" }}>
-            Projects
+          <Link href="/projects" passHref>
+            <Typography variant="button" sx={{ color: "inherit", mx: 2 }}>
+              Projects
+            </Typography>
           </Link>
-          <Link href="/learning" style={{ marginRight: 16, color: "inherit", textDecoration: "none" }}>
-            Learning
+          <Link href="/learning" passHref>
+            <Typography variant="button" sx={{ color: "inherit", mx: 2 }}>
+              Learning
+            </Typography>
           </Link>
-          <Link href="/experience" style={{ marginRight: 16, color: "inherit", textDecoration: "none" }}>
-            Experience
+          <Link href="/experience" passHref>
+            <Typography variant="button" sx={{ color: "inherit", mx: 2 }}>
+              Experience
+            </Typography>
           </Link>
-          <Link href="/contact" style={{ color: "inherit", textDecoration: "none" }}>
-            Contact
+          <Link href="/contact" passHref>
+            <Typography variant="button" sx={{ color: "inherit", mx: 2 }}>
+              Contact
+            </Typography>
           </Link>
         </nav>
-        <IconButton
-          onClick={() => dispatch(toggleMode())}
-          color="inherit"
-        >
+        <IconButton onClick={() => dispatch(toggleMode())} color="inherit">
           {mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
         </IconButton>
       </Toolbar>
     </AppBar>
   );
 }
-
