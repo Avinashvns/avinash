@@ -20,7 +20,7 @@ export const getDesignTokens = (mode) => ({
     mode,
     ...(mode === 'light'
       ? {
-          primary: { main: '#1976d2' },
+          primary: { main: '#11998e' }, // solid color matching gradient
           background: { default: '#f4f6f8', paper: '#fff' },
           text: {
             primary: '#000',
@@ -29,7 +29,7 @@ export const getDesignTokens = (mode) => ({
           },
         }
       : {
-          primary: { main: '#90caf9' },
+          primary: { main: '#11998e' }, // same solid matching gradient
           background: { default: '#121212', paper: '#1e1e1e' },
           text: {
             primary: '#fff',
@@ -47,6 +47,9 @@ export const getDesignTokens = (mode) => ({
     borderRadius: 8,
   },
 });
+
+
+
 
 export const createAppTheme = (mode) => {
   let theme = createTheme(getDesignTokens(mode));
